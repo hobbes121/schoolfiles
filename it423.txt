@@ -1,0 +1,78 @@
+Nikola Tesla 7/10/1856
+Marie Curie 11/7/1867
+Ada Lovelace 12/10/1815
+Grace Hopper 12/9/1906
+Margaret Hamilton 12/9/1902
+Linus Torvalds 12/28/1969
+Ken Thompson 2/4/1943
+Dennis Ritchie 9/9/1941
+
+VPA 
+miniHandheld
+whiteBoard
+smartSpeaker
+
+
+create table Students (
+	student_id int primary key, 
+	first_name varchar(50), 
+	last_name varchar(50),
+	dob date, 
+	entry_year int, 
+	grade_level varchar(20));
+
+create table Teachers (
+	teacher_id int primary key, 
+	first_name varchar(50), 
+	last_name varchar(50), 
+	role varchar(50), 
+	department varchar(50), 
+	entry_year int, 
+	access_level int);
+
+create table Courses (
+	course_id int primary key, 
+	name varchar(100), 
+	student_id int, 
+	teacher_id int, 
+	year_req varchar(20), 
+	room_number varchar(20), 
+	term varchar(20));
+
+create table IoT_Devices (
+	device_id int primary key, 
+	device_type varchar(100), 
+	student_id int, 
+	teacher_id int,
+	course_id int, 
+	access_level int, 
+	status varchar(20), 
+	location varchar(100));
+
+insert into Students (first_name, last_name, dob, entry_year, grade_level) values ('Nikola','Tesla','1856-07-10',2020,'12');
+insert into Students (first_name, last_name, dob, entry_year, grade_level) values ('Marie','Curie','1857-11-07',2023,'11');
+insert into Students (first_name, last_name, dob, entry_year, grade_level) values ('Ada','Lovelace','1815-12-10',2024,'6');
+insert into Teachers (first_name, last_name, role, department, entry_year, access_level) values ('Grace','Hopper','Teacher','Math',1990,3);
+insert into Teachers (first_name, last_name, role, department, entry_year, access_level) values ('Margaret','Hamilton','Teacher','Science',2001,3);
+insert into Teachers (first_name, last_name, role, department, entry_year, access_level) values ('Linus','Torvalds','Teacher','Language',2015,3);
+insert into Teachers (first_name, last_name, role, department, entry_year, access_level) values ('Ken','Thompson','Admin','Admin',1805,4);
+insert into Teachers (first_name, last_name, role, department, entry_year, access_level) values ('Dennis','Ritchie','IT','IT',1980,5);
+insert into Courses (course_id, name, student_id, teacher_id, year_req, room_number, term) values (42,'Math',1,1,'12','22A','Spring');
+insert into Courses (course_id, name, student_id, teacher_id, year_req, room_number, term) values (17,'Science',2,2,'11','54B','Fall');
+insert into Courses (course_id, name, student_id, teacher_id, year_req, room_number, term) values (324,'Language',3,3,'6','15','Spring');
+insert into Courses (course_id, name, student_id, teacher_id, year_req, room_number, term) values (12,'Calculus',1,1,'12','2B','Summer');
+insert into IoT_Devices (device_id, device_type, teacher_id, access_level, status, location) values ('1','VPA',1,3,'active','22A');
+insert into IoT_Devices (device_id, device_type, teacher_id, access_level, status, location) values ('2','VPA',2,3,'active','54B');
+insert into IoT_Devices (device_id, device_type, teacher_id, access_level, status, location) values ('3','VPA',3,3,'active','15');
+insert into IoT_Devices (device_id, device_type, student_id, access_level, status) values ('201','miniHandheld',1,2,'active');
+insert into IoT_Devices (device_id, device_type, student_id, access_level, status) values ('202','miniHandheld',2,2,'active');
+insert into IoT_Devices (device_id, device_type, teacher_id, access_level, status, location) values ('301','whiteBoard',2,3,'active','54B');
+insert into IoT_Devices (device_id, device_type, teacher_id, access_level, status, location) values ('302','whiteBoard',3,3,'active','15');
+insert into IoT_Devices (device_id, device_type, teacher_id, access_level, status, location) values ('303','whiteBoard',1,3,'inactive','22A');
+insert into IoT_Devices (device_id, device_type, teacher_id, access_level, status, location) values ('401','smartSpeaker',3,3,'active','15');
+insert into IoT_Devices (device_id, device_type, teacher_id, access_level, status, location) values ('402','smartSpeaker',3,3,'inactive','22A');
+
+delete from Courses where course_id = 12;
+delete from IoT_Devices where status = 'inactive';
+update Students set entry_year = 2024 where last_name = 'Tesla';
+update Students set entry_year = 2020 where student_id = 3;
